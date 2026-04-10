@@ -1,7 +1,9 @@
+from searchAccount import searchAccountByUsername
+
 def printMenu():
     print("[1]. Create Acoount.")
-    print("[2]. Exit.")
-
+    print("[2]. Search.")
+    print("[3]. Exist.")
 
 
 def inputNewAccountData():
@@ -31,10 +33,15 @@ def main():
 
     if option == 1: 
         uData = inputNewAccountData()
-        print(uData)
         CreateAccount(uData)
 
-    print ("Thank You")
+    elif option == 2 :
+        searchAccountByUsername()
+
+    elif option == 3 :
+        print("Exited Successfully :)")
+
+    print("Thank You !")
 
 
 main()
