@@ -1,6 +1,8 @@
 from searchAccount import searchAccountByUsername
 
 def printMenu():
+    print("WELCOME TO THE CENTRAL BANK !")
+    
     print("[1]. Create Acoount.")
     print("[2]. Search.")
     print("[3]. Exist.")

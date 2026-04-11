@@ -27,7 +27,7 @@ def getAccountNumbers():
         return count
 
 def printFormattedAccountDictionary(accDictionary):
-     print(accDictionary)
+     
      print("########################################")
      print("First Name:", accDictionary["first_name"])
      print("Last Name:", accDictionary["last_name"])
@@ -37,17 +37,19 @@ def printFormattedAccountDictionary(accDictionary):
      print("Balance:",accDictionary["balance"])
 
 def searchAccountByUsername():
-    userinput = input("Enter Username Please : ")
+    userinput = input("Enter Username Please : ").lower()
     accountcount = getAccountNumbers()
     found = False
     for x in range (accountcount):
         accountDataStr = getAccountDataStr(x+1) 
         accountDictionary = parseAccountStr(accountDataStr)
-        if accountDictionary["username"] == userinput:
+        username = accountDictionary["username"].lower()
+        substringIndex = username.find(userinput)
+        if substringIndex >= 0:
             printFormattedAccountDictionary(accountDictionary)
             found = True
-            break
-
+        
+        
     if not found:
         print("no record found")
 
