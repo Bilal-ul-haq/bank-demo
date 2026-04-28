@@ -10,6 +10,11 @@ def parseAccountStr(accountstr):
         "balance": int(data[5])
     }
 
+def perpareAccountStr(accDictionary):
+    string = accDictionary["first_name"] +','+ accDictionary["last_name"] +','+ accDictionary["email"] +','+ accDictionary["username"] +','+ accDictionary["password"] +','+ str(accDictionary["balance"])
+    return string 
+
+
 def getAccountDataStr(lineNum):
     with open("accounts.txt", "r") as file:
         lines = file.readlines()
@@ -53,4 +58,45 @@ def searchAccountByUsername():
     if not found:
         print("no record found")
 
-# print(parseAccountStr("john,doe,j@gmail.com,johnie,doeie,10"))
+    
+                      
+def isValidUsername(searchUsername):
+
+    accountcount = getAccountNumbers()
+    found = False
+    for x in range (accountcount):
+        accountDataStr = getAccountDataStr(x+1) 
+        accountDictionary = parseAccountStr(accountDataStr)
+        username = accountDictionary["username"].lower()
+
+        if searchUsername.lower() == username :
+            found = True
+            break
+        
+        
+    return found
+
+
+def getLineNumberOfUsername(searchUsername):
+    accountcount = getAccountNumbers()
+    # print(accountcount)
+    found = False
+    for x in range (accountcount):
+        accountDataStr = getAccountDataStr(x+1) 
+        # print(accountDataStr)
+        accountDictionary = parseAccountStr(accountDataStr)
+        # print(accountDictionary)
+        username = accountDictionary["username"].lower()
+        # print(username)
+        if searchUsername.lower() == username:
+            return x+1
+
+    return 0
+
+
+line = getAccountDataStr(4)
+d = parseAccountStr(line)
+string = perpareAccountStr(d)
+print(line)
+print(d)
+print(string)
