@@ -1,4 +1,6 @@
 from dataManipulation import insertNewAccount
+from searchAccount import getLineNumberOfUsername
+
 
 def inputNewAccountData():
     first = input("First name : ")
@@ -22,4 +24,10 @@ def inputNewAccountData():
 
 def createAccount():
     uData = inputNewAccountData()
-    insertNewAccount(uData)        
+    line =  getLineNumberOfUsername (uData["userName"])
+
+    if line == 0:
+        insertNewAccount(uData)
+
+    else:
+        print("Could not create account :(. Please choose a different username.")        
