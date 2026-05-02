@@ -1,6 +1,8 @@
 from searchAccount import searchAccountByUsername
 from createAccount import createAccount
 from dataManipulation import deposit
+from dataManipulation import withdraw
+
 
 def printMenu():
     print("WELCOME TO THE CENTRAL BANK !")
@@ -8,7 +10,8 @@ def printMenu():
     print("[1]. Create Acoount.")
     print("[2]. Search.")
     print("[3]. Deposit.")
-    print("[4]. Exist.")
+    print("[4]. Withdraw.")
+    print("[5]. Exit.")
 
 
 
@@ -25,7 +28,12 @@ def main():
     elif option == 3 :
         deposit()
 
+
     elif option == 4 :
+        withdraw()
+
+
+    elif option == 5 :
         print("Exited Successfully :)")
 
     print("Thank You !")

@@ -41,28 +41,75 @@ def addBalance():
     username1 = username["username"]
     
     linenum = getLineNumberOfUsername(username1)
+    line = getAccountDataStr(linenum)
+    # parse = parseAccountStr(datastr)
+    # line = prepareAccountStr(parse)
+    parts = line.strip().split(",")
+    inputbalance = username["amount"]
+    current_balance = parts[5]
+    if parts[3] == username1:    
+        add = int(parts[5]) + inputbalance
+        parts[5] = str(add)
+        updated_line = ",".join(parts)
+        with open("accounts.txt", "r") as f:
+            file_lines = f.readlines()
+
+        file_lines[linenum - 1] = updated_line + "\n"
+
+
+        with open("accounts.txt", "w") as f:
+            f.writelines(file_lines)
+
+        print("Your current balance has been successfully updated! :)")
+
+    else:
+        print("Account not found :(")
+
+def deposit():
+    addBalance()
+
+
+def subtractBalance():
+    username = getUserInput()
+
+    username1 = username["username"]
+    
+    linenum = getLineNumberOfUsername(username1)
     datastr = getAccountDataStr(linenum)
     parse = parseAccountStr(datastr)
     line = prepareAccountStr(parse)
     parts = line.strip().split(",")
     balance = username["amount"]
     current_balance = parts[5]
-    add = int(parts[5]) + balance
-    parts[5] = str(add)
-    updated_line = ",".join(parts)
-    with open("accounts.txt", "r") as f:
-        file_lines = f.readlines()
+    
+    if parts[3] == username1 :
+        
+        if int(current_blance) > balance:
+            subtract = int(parts[5]) - balance
+            parts[5] = str(subtract)
+            updated_line = ",".join(parts)
+            with open("accounts.txt", "r") as f:
+                file_lines = f.readlines()
 
-    file_lines[linenum - 1] = updated_line + "\n"
+            file_lines[linenum - 1] = updated_line + "\n"
 
 
-    with open("accounts.txt", "w") as f:
-        f.writelines(file_lines)
+            with open("accounts.txt", "w") as f:
+                f.writelines(file_lines)
+            
+            print("Your withdrawal has been completed successfully :)")
 
-    print("Your current balance has been successfully updated! :)")
+        else:
+            print("You don't have enough amount to withdraw this much :(")
+    
+    else: 
+        print('Account not fount :(')
 
-def deposit():
-    addBalance()
+def withdraw():
+
+    subtractBalance()
+
+
     
 
 
