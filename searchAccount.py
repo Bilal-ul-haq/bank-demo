@@ -10,7 +10,7 @@ def parseAccountStr(accountstr):
         "balance": int(data[5])
     }
 
-def perpareAccountStr(accDictionary):
+def prepareAccountStr(accDictionary):
     string = accDictionary["first_name"] +','+ accDictionary["last_name"] +','+ accDictionary["email"] +','+ accDictionary["username"] +','+ accDictionary["password"] +','+ str(accDictionary["balance"])
     return string 
 
@@ -22,7 +22,7 @@ def getAccountDataStr(lineNum):
     if len(lines) >= lineNum:
         return lines[lineNum-1]
     else:
-        return None
+        return Nones
 
 def getAccountNumbers():
         with open("accounts.txt", "r") as file:
@@ -94,9 +94,9 @@ def getLineNumberOfUsername(searchUsername):
     return 0
 
 
-line = getAccountDataStr(4)
-d = parseAccountStr(line)
-string = perpareAccountStr(d)
-print(line)
-print(d)
-print(string)
+# line = getAccountDataStr(4)
+# d = parseAccountStr(line)
+# string = perpareAccountStr(d)
+# print(line)
+# print(d)
+# print(string)

@@ -1,6 +1,6 @@
 from searchAccount import searchAccountByUsername
 from createAccount import createAccount
-from deposit import deposit
+from dataManipulation import deposit
 
 def printMenu():
     print("WELCOME TO THE CENTRAL BANK !")
